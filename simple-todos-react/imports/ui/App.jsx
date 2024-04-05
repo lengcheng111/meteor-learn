@@ -34,30 +34,28 @@ export const App = () => {
     };
     const deleteTask = ({_id}) => TasksCollection.remove(_id);
 
-    return (<div className="app">
-            <header>
-                <div className="app-bar">
-                    <div className="app-header">
-                        <h1>
-                            📝️ To Do List
-                            {pendingTasksTitle}
-                        </h1>
-                    </div>
-                </div>
-            </header>
-
-            <div className="main">
+    return (
+        <div className="main">
+        {user ? (
+            <Fragment>
                 <TaskForm/>
+
                 <ToogleTask hideCompleted={hideCompleted} setHideCompleted={setHideCompleted}/>
 
                 <ul className="tasks">
-                    {tasks.map(task => (<Task
+                    {tasks.map(task => (
+                        <Task
                             key={task._id}
                             task={task}
                             onCheckboxClick={toggleChecked}
                             onDeleteClick={deleteTask}
-                        />))}
+                        />
+                    ))}
                 </ul>
-            </div>
-        </div>);
+            </Fragment>
+        ) : (
+            <LoginForm />
+        )}
+    </div>
+    );
 };

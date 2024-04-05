@@ -11,8 +11,8 @@ export const LoginForm = () => {
 		Meteor.loginWithPassword(username, password);
 	};
 
-	return (
-		<form onSubmit={submit} className="login-form">
+	return (<form onSubmit={submit} className="login-form">
+		<div>
 			<label htmlFor="username">Username</label>
 
 			<input
@@ -20,9 +20,11 @@ export const LoginForm = () => {
 				placeholder="Username"
 				name="username"
 				required
-				onChange={e => setUsername(e.target.value)}
+				onChange={(e) => setUsername(e.target.value)}
 			/>
+		</div>
 
+		<div>
 			<label htmlFor="password">Password</label>
 
 			<input
@@ -30,10 +32,12 @@ export const LoginForm = () => {
 				placeholder="Password"
 				name="password"
 				required
-				onChange={e => setPassword(e.target.value)}
+				onChange={(e) => setPassword(e.target.value)}
 			/>
+		</div>
 
+		<div>
 			<button type="submit">Log In</button>
-		</form>
-	);
+		</div>
+	</form>);
 };
